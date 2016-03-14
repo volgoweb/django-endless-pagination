@@ -1,9 +1,14 @@
 """Django Endless Pagination object loaders."""
 
 from __future__ import unicode_literals
-
+import django
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.importlib import import_module
+
+if django.VERSION >= (1, 9):
+    from importlib import import_module
+else:
+    from django.utils.importlib import import_module
+
 
 
 def load_object(path):
